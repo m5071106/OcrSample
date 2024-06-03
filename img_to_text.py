@@ -42,10 +42,10 @@ def img_to_text():
             img = cv2.imread(source_dir + "/" + filename)
             # グレースケール
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            # 2値化前の閾値設定
+            # 2値化
             threshold = 140
             img = cv2.threshold(img, threshold, 255, cv2.THRESH_BINARY)[1]
-            # 2値化
+            # 反転
             img = cv2.bitwise_not(img)
             cv2.imwrite(temporary_dir + "/" + filename, img)
             # OCR
@@ -64,8 +64,6 @@ def img_to_text():
             os.rename(f'{source_dir}/{filename}', f'{backup_dir}/{filename}')
             # バックアップディレクトリに移動したファイルに年月日時分秒をつけてリネーム
             os.rename(f'{backup_dir}/{filename}', f'{backup_dir}/{filename}.{datetimenow}')
-
-            # 結果の書き込み
             # resultフォルダ内にファイルを作成し、結果を書き込む
             with open(f'{result_dir}/{resultfilename}', mode='w+') as f:
                 f.write(result)
