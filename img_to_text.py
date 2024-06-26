@@ -8,6 +8,7 @@ import numpy as np
 import os
 import pyocr
 import sys
+import platform
 
 # 画像からテキストに変換する関数
 def img_to_text():
@@ -27,6 +28,11 @@ def img_to_text():
     temporary_dir = './temporary'
     # sourceディレクトリ内のファイル一覧を取得
     file_list = os.listdir(source_dir)
+
+    # Tesseractのパスを指定 (Windowsの場合)
+    print(platform.system())
+    if platform.system() == 'Windows':
+        pyocr.tesseract.TESSERACT_CMD = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
     # tempoary_dir 内のファイルを削除
     for filename in os.listdir(temporary_dir):

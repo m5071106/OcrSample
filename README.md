@@ -15,3 +15,17 @@
 3. http://[hostname]:5001/ でアクセスします。
 4. ファイルをアップロードし、変換ボタン選択で処理が始まります。
 5. 結果がWeb上に表記されます。./result/フォルダを別の静的webでディレクトリが見られるよう設定することで変換結果をダウンロードします。
+
+Install Log:
+Windows:
+  # 画像処理径のモジュール追加
+  pip3 install pillow 
+  pip3 install opencv-python
+  pip3 install pyocr
+  # pyocr用のツールとしてtesseractを追加
+  Install tesseract
+    URL:
+      https://tsukimitech.com/pyocr-get_available_tools/
+      https://tsukimitech.com/pyocr-tessractocr/
+        https://github.com/UB-Mannheim/tesseract/wiki
+          tesseract-ocr-w64-setup-x.x.exe
